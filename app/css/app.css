@@ -41,7 +41,7 @@ header nav ul li:hover {
 
 section#content {
 	width: 700px;
-	margin: auto;
+	margin: 20px auto;
 
 	color: #000;
 }
@@ -61,7 +61,7 @@ section#content p {
 
 div.featureArea {
 	width: 100%;
-	margin: 20px auto 0px auto;
+	margin: 10px auto 10px auto;
 	padding: 20px;
 	background-color: #f4f6f7;
 	border: 1px solid #dbe3e4;
