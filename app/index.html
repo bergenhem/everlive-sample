@@ -2,8 +2,152 @@
 <html>
 <head>
 	<title>Everlive Sample App</title>
+	<link rel="stylesheet" type="text/css" href="css/kendo/kendo.common.min.css">
+	<link rel="stylesheet" type="text/css" href="css/kendo/kendo.flat.min.css">
+	<link rel="stylesheet" type="text/css" href="css/app.css">
 </head>
 <body>
 
+	<div id="app"></div>
+
+	<!-- Overall Layout Template -->
+	<script type="text/x-kendo-template" id="kendo-layout-template">
+		<header>
+			<nav>
+				<ul>
+					<li><a href="/#/">Home</a></li>
+					<li><a href="/#/users/">Users</a></li>
+					<li><a href="/#/types/">Types</a></li>
+				</ul>
+			</nav>
+		</header>
+		<section id="content"></section>
+	</script>
+
+	<!-- Views -->
+	
+	<!-- Home/Index View -->
+	<script type="text/x-kendo-template" id="home-view">
+		<h1>Home View</h1>
+		<p>This is a quick sample application showcasing working with the Everlive JavaScript SDK in a web application.</p>
+	</script>
+
+	<!-- Users View -->
+	<script type="text/x-kendo-template" id="users-view">
+		<h1>User View</h1>
+		<div class="featureArea">
+			<h3>Add user</h3>
+			<label for="userNameInput">User Name: </label>
+			<input type="text" id="userNameInput" class="k-input" />
+
+			<label for="passwordInput">Password: </label>
+			<input type="text" id="passwordInput" class="k-input" />
+
+			<label for="emailInput">Email: </label>
+			<input type="text" id="emailInput" class="k-input" />
+
+			<a href="#" class="k-button" data-bind="events: { click: addUserClick }">Add User</a>
+		</div>
+		<div class="featureArea">
+			<h3>Get All Users</h3>
+
+			<a href="#" class="k-button" data-bind="events: { click: getAllUsersClick }">Get All Users</a>
+		</div>
+		<div class="featureArea">
+			<h3>Get Single User</h3>
+			<label for="userIdInput">ID: </label>
+			<input type="text" id="userIdInput" class="k-input" />
+
+			<a href="#" class="k-button" data-bind="events: { click: getUserIdClick }">Get User</a>
+		</div>
+		<div class="featureArea">
+			<h3>Remove Single User</h3>
+			<label for="removeUserInput">UserName: </label>
+			<input type="text" id="removeUserInput" class="k-input" />
+
+			<a href="#" class="k-button" data-bind="events: { click: removeUserClick }">Remove User</a>
+		</div>
+		<div class="featureArea">
+			<h3>Log In User</h3>
+			<label for="loginUserInput">UserName: </label>
+			<input type="text" id="loginUserInput" class="k-input" />
+
+			<label for="loginPasswordInput">Password: </label>
+			<input type="text" id="loginPasswordInput" class="k-input" />
+
+			<a href="#" class="k-button" data-bind="events: { click: logInClick }">Log In</a>
+		</div>
+		<div class="featureArea">
+			<h3>Log Out</h3>
+
+			<a href="#" class="k-button" data-bind="events: { click: logOutClick }">Log Out</a>
+		</div>
+	</script>
+
+	<!-- Types View -->
+	<script type="text/x-kendo-template" id="types-view">
+		<h1>Types View</h1>
+		<div class="featureArea">
+			<h3>Add item</h3>
+			<label for="scNameInput">SC Name: </label>
+			<input type="text" id="scNameInput" class="k-input" />
+
+			<label for="attendingCheckBox">Is Attending: </label>
+			<input type="checkbox" id="attendingCheckBox" class="k-input" />
+
+			<a href="#" class="k-button" data-bind="events: { click: addItemClick }">Add Item</a>
+		</div>
+		<div class="featureArea">
+			<h3>Get All Items</h3>
+
+			<a href="#" class="k-button" data-bind="events: { click: getAllItemsClick }">Get All Items</a>
+		</div>
+		<div class="featureArea">
+			<h3>Get Single Item (ID)</h3>
+			<label for="itemId">ID: </label>
+			<input type="text" id="itemId" class="k-input" />
+
+			<a href="#" class="k-button" data-bind="events: { click: getSingleItemIdClick }">Get Item</a>
+		</div>
+		<div class="featureArea">
+			<h3>Get Single Item (Filter)</h3>
+			<label for="itemName">Name: </label>
+			<input type="text" id="itemName" class="k-input" />
+
+			<a href="#" class="k-button" data-bind="events: { click: getSingleItemFilterClick }">Get Item</a>
+		</div>
+		<div class="featureArea">
+			<h3>Update item</h3>
+			<label for="idUpdateInput">ID: </label>
+			<input type="text" id="idUpdateInput" class="k-input" />
+
+			<label for="scNameUpdateInput">SC Name: </label>
+			<input type="text" id="scNameUpdateInput" class="k-input" />
+
+			<label for="attendingUpdateCheckBox">Is Attending: </label>
+			<input type="checkbox" id="attendingUpdateCheckBox" class="k-input" />
+
+			<a href="#" class="k-button" data-bind="events: { click: updateItemClick }">Update Item</a>
+		</div>
+		<div class="featureArea">
+			<h3>Remove Item</h3>
+			<label for="removeItemIdInput">ID: </label>
+			<input type="text" id="removeItemIdInput" class="k-input" />
+
+			<a href="#" class="k-button" data-bind="events: { click: removeItemClick }">Get Item</a>
+		</div>
+	</script>
+
+	<!-- End Views -->
+
+	<script type="text/javascript" src="js/lib/jquery.min.js"></script>
+	<script type="text/javascript" src="js/lib/kendo.all.min.js"></script>
+	<script type="text/javascript" src="js/lib/everlive.all.min.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript">
+		(function () {
+			KendoApp.startApp();
+		})();
+	</script>
 </body>
 </html>
