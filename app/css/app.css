@@ -72,6 +72,10 @@ div.featureArea label {
 	margin: 5px 0 0 5px;
 }
 
+div.featureArea label {
+	font-style: italic;
+}
+
 div.featureArea a {
 	width: 110px;
 	display: block;
