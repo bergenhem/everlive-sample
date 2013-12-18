@@ -32,11 +32,59 @@
 	<!-- Home/Index View -->
 	<script type="text/x-kendo-template" id="home-view">
 		<h1>Home View</h1>
+		<p>This is a quick sample application showcasing working with the Everlive JavaScript SDK in a web application.</p>
 	</script>
 
 	<!-- Users View -->
 	<script type="text/x-kendo-template" id="users-view">
 		<h1>User View</h1>
+		<div class="featureArea">
+			<h3>Add user</h3>
+			<label for="userNameInput">User Name: </label>
+			<input type="text" id="userNameInput" />
+
+			<label for="passwordInput">Password: </label>
+			<input type="text" id="passwordInput" />
+
+			<label for="emailInput">Email: </label>
+			<input type="text" id="emailInput" />
+
+			<a href="#" class="k-button" data-bind="events: { click: addUserClick }">Add User</a>
+		</div>
+		<div class="featureArea">
+			<h3>Get All Users</h3>
+
+			<a href="#" class="k-button" data-bind="events: { click: getAllUsersClick }">Get All Users</a>
+		</div>
+		<div class="featureArea">
+			<h3>Get Single User</h3>
+			<label for="userIdInput">Id: </label>
+			<input type="text" id="userIdInput" />
+
+			<a href="#" class="k-button" data-bind="events: { click: getUserIdClick }">Get User</a>
+		</div>
+		<div class="featureArea">
+			<h3>Remove Single User</h3>
+			<label for="removeUserInput">UserName: </label>
+			<input type="text" id="removeUserInput" />
+
+			<a href="#" class="k-button" data-bind="events: { click: removeUserClick }">Remove User</a>
+		</div>
+		<div class="featureArea">
+			<h3>Log In User</h3>
+			<label for="loginUserInput">UserName: </label>
+			<input type="text" id="loginUserInput" />
+
+			<label for="loginPasswordInput">Password: </label>
+			<input type="text" id="loginPasswordInput" />
+
+			<a href="#" class="k-button" data-bind="events: { click: logInClick }">Log In</a>
+		</div>
+		<div class="featureArea">
+			<h3>Log Out</h3>
+
+			<a href="#" class="k-button" data-bind="events: { click: logOutClick }">Log Out</a>
+		</div>
 	</script>
 
 	<!-- Types View -->

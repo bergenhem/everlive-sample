@@ -7,6 +7,11 @@ var KendoApp = (function() {
 	var _scData = _everLive.data('SC');
 
 	_usersViewModel = new kendo.observable({
+		getAllUsersClick: function(e) {
+			e.preventDefault();
+
+			_usersViewModel.getAllUsers();
+		},
 		getAllUsers: function() {
 			_everLive.Users.get()
 				.then(function(data) {
@@ -16,6 +21,13 @@ var KendoApp = (function() {
 					console.log(error);
 				});
 		},
+		getUserIdClick: function(e) {
+			e.preventDefault();
+
+			var id = $('#userIdInput').val();
+
+			_usersViewModel.getSingleUser(id);
+		},
 		getSingleUser: function(id) {
 			_everLive.Users.getById(id)
 				.then(function(data) {
@@ -24,6 +36,14 @@ var KendoApp = (function() {
 				function(error) {
 					console.log(error);
 				});
+		},
+		addUserClick: function(e) {
+			e.preventDefault();
+			var userName = $('#userNameInput').val();
+			var password = $('#passwordInput').val();
+			var email = $('#emailInput').val();
+
+			_usersViewModel.addUser(userName, password, email);
 		},
 		addUser: function(userName, password, email) {
 			_everLive.Users.register(userName, password,
@@ -37,6 +57,13 @@ var KendoApp = (function() {
 				console.log(error);
 			});
 		},
+		removeUserClick: function(e) {
+			e.preventDefault();
+
+			var userName = $('#removeUserInput').val();
+
+			_usersViewModel.removeUser(userName);
+		},
 		removeUser: function(userName) {
 			_everLive.Users.destroy({ 'Username': userName },
 				function(data) {
@@ -45,6 +72,14 @@ var KendoApp = (function() {
 				function(error) {
 					console.log(error);
 				});
+		},
+		logInClick: function(e) {
+			e.preventDefault();
+
+			var userName = $('#loginUserInput').val();
+			var password = $('#loginPasswordInput').val();
+
+			_usersViewModel.logIn(userName, password);
 		},
 		logIn: function(userName, password) {
 			_everLive.Users.login(userName, password,
@@ -55,8 +90,14 @@ var KendoApp = (function() {
 					console.log(error);
 				});
 		},
+		logOutClick: function(e) {
+			e.preventDefault();
+
+			_usersViewModel.logOut();
+		},
 		logOut: function() {
 			_everLive.Users.logout();
+			console.log('Logged out!');
 		}
 	});
 

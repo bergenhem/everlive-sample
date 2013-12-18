@@ -59,18 +59,6 @@ section#content p {
 	margin-top: 10px;
 }
 
-section#content a:link,
-section#content a:visited,
-section#content a:hover,
-section#content a:active {
-	text-decoration: none;
-	color: #10c4b2;
-}
-
-section#content a:hover {
- 	text-decoration: underline;
-}
-
 footer {
 	position: absolute;
 	bottom: 0px;
