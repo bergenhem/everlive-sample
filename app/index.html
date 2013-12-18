@@ -8,21 +8,51 @@
 </head>
 <body>
 
-	<!-- <div id="app"></div> -->
+	<div id="app"></div>
 
-	<header>
-		<nav>
-			<ul>
-				<li><a href="/#/">Home</a></li>
-				<li><a href="/#/users/">Users</a></li>
-				<li><a href="/#/types">Types</a></li>
-			</ul>
-		</nav>
-	</header>
-	<section id="content"></section>
-	<footer>
-		<div class="footerDiv">Everlive Sample Application</div>
-	</footer>
+	<!-- Overall Layout Template -->
+	<script type="text/x-kendo-template" id="kendo-layout-template">
+		<header>
+			<nav>
+				<ul>
+					<li><a href="/#/">Home</a></li>
+					<li><a href="/#/users/">Users</a></li>
+					<li><a href="/#/types/">Types</a></li>
+				</ul>
+			</nav>
+		</header>
+		<section id="content"></section>
+		<footer>
+			<div class="footerDiv">Everlive Sample Application</div>
+		</footer>
+	</script>
 
+	<!-- Views -->
+	
+	<!-- Home/Index View -->
+	<script type="text/x-kendo-template" id="home-view">
+		<h1>Home View</h1>
+	</script>
+
+	<!-- Users View -->
+	<script type="text/x-kendo-template" id="users-view">
+		<h1>User View</h1>
+	</script>
+
+	<!-- Types View -->
+	<script type="text/x-kendo-template" id="types-view">
+		<h1>Types View</h1>
+	</script>
+
+	<!-- End Views -->
+
+	<script type="text/javascript" src="js/lib/jquery.min.js"></script>
+	<script type="text/javascript" src="js/lib/kendo.all.min.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript">
+		(function () {
+			KendoApp.startApp();
+		})();
+	</script>
 </body>
 </html>
