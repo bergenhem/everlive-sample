@@ -10,20 +10,53 @@ var KendoApp = (function() {
 		getAllUsers: function() {
 			_everLive.Users.get()
 				.then(function(data) {
-					console.log(data);
+					console.log('Get All Users: ' + JSON.stringify(data));
 				},
 				function(error) {
 					console.log(error);
 				});
 		},
-		getSingleUser: function(userName) {
-
+		getSingleUser: function(id) {
+			_everLive.Users.getById(id)
+				.then(function(data) {
+					console.log('Get Single User: ' + JSON.stringify(data));
+				},
+				function(error) {
+					console.log(error);
+				});
 		},
 		addUser: function(userName, password, email) {
-			
+			_everLive.Users.register(userName, password,
+			{
+				Email: email
+			},
+			function(data) {
+				console.log('Added User: ' + JSON.stringify(data));
+			},
+			function(error) {
+				console.log(error);
+			});
 		},
 		removeUser: function(userName) {
-
+			_everLive.Users.destroy({ 'Username': userName },
+				function(data) {
+					console.log('Removed User: ' + JSON.stringify(data));
+				},
+				function(error) {
+					console.log(error);
+				});
+		},
+		logIn: function(userName, password) {
+			_everLive.Users.login(userName, password,
+				function(data) {
+					console.log('Logged In: ' + JSON.stringify(data));
+				},
+				function(error) {
+					console.log(error);
+				});
+		},
+		logOut: function() {
+			_everLive.Users.logout();
 		}
 	});
 
@@ -83,6 +116,7 @@ var KendoApp = (function() {
 
 	_kendoApp.usersViewModel = _usersViewModel;
 	_kendoApp.typesViewModel = _typesViewModel;
+	_kendoApp.everLive = _everLive;
 
 	return _kendoApp;
 })();
