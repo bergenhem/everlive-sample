@@ -1,17 +1,26 @@
 var KendoApp = (function() {
 	var _kendoApp = {};
 	var _usersViewModel,
-		_typesViewModel,
+		_typesViewModel;
+
+	var _everLive = new Everlive('nNrMn8Wnn4qXbYmG');
+
 
 	_usersViewModel = new kendo.observable({
 		getAllUsers: function() {
-
+			_everLive.Users.get()
+				.then(function(data) {
+					console.log(data);
+				},
+				function(error) {
+					console.log(error);
+				});
 		},
 		getSingleUser: function(userName) {
 
 		},
-		addUser: function(userName, email, password) {
-
+		addUser: function(userName, password, email) {
+			
 		},
 		removeUser: function(userName) {
 
