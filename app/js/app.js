@@ -4,7 +4,7 @@ var KendoApp = (function() {
 		_typesViewModel;
 
 	var _everLive = new Everlive('nNrMn8Wnn4qXbYmG');
-
+	var _scData = _everLive.data('SC');
 
 	_usersViewModel = new kendo.observable({
 		getAllUsers: function() {
@@ -62,19 +62,68 @@ var KendoApp = (function() {
 
 	_typesViewModel = new kendo.observable({
 		getAll: function() {
-
+			_scData.get()
+				.then(function(data) {
+					console.log('Get All SCs: ' + JSON.stringify(data));
+				},
+				function(error){
+					console.log(error);
+				});
 		},
-		getSingleItem: function() {
-
+		getSingleItem: function(id) {
+			_scData.getById(id)
+				.then(function(data) {
+					console.log('Get Single Item By ID: ' + JSON.stringify(data));
+				},
+				function(error){
+					console.log(error);
+				});
 		},
-		addItem: function(item) {
-
+		getSingleItemFilter: function(name) {
+			var filter = {
+				'Name' : name
+			};
+			_scData.get(filter)
+				.then(function(data) {
+					console.log('Get Single Item By Filter: ' + JSON.stringify(data));
+				},
+				function(error) {
+					console.log(error);
+				});
 		},
-		updateItem: function(item) {
-
+		addItem: function(name, isAttending) {
+			_scData.create({
+				'Name': name,
+				'Attending': isAttending
+			},
+			function(data) {
+				console.log('Added Item: ' + JSON.stringify(data));
+			},
+			function(error) {
+				console.log(error);
+			});
 		},
-		removeItem: function(item) {
-
+		updateItem: function(id, name, isAttending) {
+			_scData.updateSingle({ 
+				Id: id,
+				'Name': name,
+				'Attending': isAttending
+			},
+			function(data) {
+				console.log('Updated Item: ' + JSON.stringify(data));
+			},
+			function(error) {
+				console.log(error);
+			});
+		},
+		removeItem: function(id) {
+			_scData.destroySingle( { Id: id },
+				function(data) {
+					console.log('Deleted Item: ' + JSON.stringify(data));
+				},
+				function(error) {
+					console.log(error);
+				});
 		}
 	});
 
