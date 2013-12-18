@@ -60,15 +60,22 @@ section#content p {
 }
 
 div.featureArea {
-	height: 90px;
 	width: 100%;
-	
 	margin: 20px auto 0px auto;
-	
-	padding: 10px;
-
+	padding: 20px;
 	background-color: #f4f6f7;
 	border: 1px solid #dbe3e4;
+}
+div.featureArea input,
+div.featureArea label {
+	display: block;
+	margin: 5px 0 0 5px;
+}
+
+div.featureArea a {
+	width: 110px;
+	display: block;
+	margin-top: 10px;
 }
 
 div.featureArea h3 {
