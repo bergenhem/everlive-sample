@@ -75,3 +75,7 @@ footer {
 footer div.footerDiv {
 	margin-top: 10px;
 }
+
+div.featureArea {
+	margin: 20px auto;
+}

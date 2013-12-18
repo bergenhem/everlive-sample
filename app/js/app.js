@@ -102,35 +102,13 @@ var KendoApp = (function() {
 	});
 
 	_typesViewModel = new kendo.observable({
-		getAll: function() {
-			_scData.get()
-				.then(function(data) {
-					console.log('Get All SCs: ' + JSON.stringify(data));
-				},
-				function(error){
-					console.log(error);
-				});
-		},
-		getSingleItem: function(id) {
-			_scData.getById(id)
-				.then(function(data) {
-					console.log('Get Single Item By ID: ' + JSON.stringify(data));
-				},
-				function(error){
-					console.log(error);
-				});
-		},
-		getSingleItemFilter: function(name) {
-			var filter = {
-				'Name' : name
-			};
-			_scData.get(filter)
-				.then(function(data) {
-					console.log('Get Single Item By Filter: ' + JSON.stringify(data));
-				},
-				function(error) {
-					console.log(error);
-				});
+		addItemClick: function(e) {
+			e.preventDefault();
+
+			var name = $('#scNameInput').val();
+			var isAttending = $('#attendingCheckBox').is(':checked');
+
+			_typesViewModel.addItem(name, isAttending);
 		},
 		addItem: function(name, isAttending) {
 			_scData.create({
@@ -144,6 +122,64 @@ var KendoApp = (function() {
 				console.log(error);
 			});
 		},
+		getAllItemsClick: function(e) {
+			e.preventDefault();
+
+			_typesViewModel.getAll();
+		},
+		getAll: function() {
+			_scData.get()
+				.then(function(data) {
+					console.log('Get All SCs: ' + JSON.stringify(data));
+				},
+				function(error){
+					console.log(error);
+				});
+		},
+		getSingleItemIdClick: function(e) {
+			e.preventDefault();
+
+			var id = $('#itemId').val();
+
+			_typesViewModel.getSingleItem(id);
+		},
+		getSingleItem: function(id) {
+			_scData.getById(id)
+				.then(function(data) {
+					console.log('Get Single Item By ID: ' + JSON.stringify(data));
+				},
+				function(error){
+					console.log(error);
+				});
+		},
+		getSingleItemFilterClick: function(e) {
+			e.preventDefault();
+
+			var name = $('#itemName').val();
+
+			_typesViewModel.getSingleItemFilter(name);
+		},
+		getSingleItemFilter: function(name) {
+			var filter = {
+				'Name' : name
+			};
+			_scData.get(filter)
+				.then(function(data) {
+					console.log('Get Single Item By Filter: ' + JSON.stringify(data));
+				},
+				function(error) {
+					console.log(error);
+				});
+		},
+		updateItemClick: function(e) {
+			e.preventDefault();
+
+			var id = $('#idUpdateInput').val();
+			var name = $('#scNameUpdateInput').val();
+			var isAttending = $('#attendingUpdateCheckBox').is(':checked');
+
+			_typesViewModel.updateItem(id, name, isAttending);
+		},
 		updateItem: function(id, name, isAttending) {
 			_scData.updateSingle({ 
 				Id: id,
@@ -156,6 +192,13 @@ var KendoApp = (function() {
 			function(error) {
 				console.log(error);
 			});
+		},
+		removeItemClick: function(e) {
+			e.preventDefault();
+
+			var id = $('#removeItemIdInput').val();
+
+			_typesViewModel.removeItem(id);
 		},
 		removeItem: function(id) {
 			_scData.destroySingle( { Id: id },

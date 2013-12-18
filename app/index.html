@@ -58,7 +58,7 @@
 		</div>
 		<div class="featureArea">
 			<h3>Get Single User</h3>
-			<label for="userIdInput">Id: </label>
+			<label for="userIdInput">ID: </label>
 			<input type="text" id="userIdInput" />
 
 			<a href="#" class="k-button" data-bind="events: { click: getUserIdClick }">Get User</a>
@@ -90,6 +90,55 @@
 	<!-- Types View -->
 	<script type="text/x-kendo-template" id="types-view">
 		<h1>Types View</h1>
+		<div class="featureArea">
+			<h3>Add item</h3>
+			<label for="scNameInput">SC Name: </label>
+			<input type="text" id="scNameInput" />
+
+			<label for="attendingCheckBox">Is Attending: </label>
+			<input type="checkbox" id="attendingCheckBox" />
+
+			<a href="#" class="k-button" data-bind="events: { click: addItemClick }">Add Item</a>
+		</div>
+		<div class="featureArea">
+			<h3>Get All Items</h3>
+
+			<a href="#" class="k-button" data-bind="events: { click: getAllItemsClick }">Get All Items</a>
+		</div>
+		<div class="featureArea">
+			<h3>Get Single Item (ID)</h3>
+			<label for="itemId">Id: </label>
+			<input type="text" id="itemId" />
+
+			<a href="#" class="k-button" data-bind="events: { click: getSingleItemIdClick }">Get Item</a>
+		</div>
+		<div class="featureArea">
+			<h3>Get Single Item (Filter)</h3>
+			<label for="itemName">Name: </label>
+			<input type="text" id="itemName" />
+
+			<a href="#" class="k-button" data-bind="events: { click: getSingleItemFilterClick }">Get Item</a>
+		</div>
+		<div class="featureArea">
+			<h3>Update item</h3>
+			<label for="idUpdateInput">ID: </label>
+			<input type="text" id="idUpdateInput" />
+
+			<label for="scNameUpdateInput">SC Name: </label>
+			<input type="text" id="scNameUpdateInput" />
+
+			<label for="attendingUpdateCheckBox">Is Attending: </label>
+			<input type="checkbox" id="attendingUpdateCheckBox" />
+
+			<a href="#" class="k-button" data-bind="events: { click: updateItemClick }">Update Item</a>
+		</div>
+		<div class="featureArea">
+			<h3>Remove Item</h3>
+			<label for="removeItemIdInput">ID: </label>
+			<input type="text" id="removeItemIdInput" />
+
+			<a href="#" class="k-button" data-bind="events: { click: removeItemClick }">Get Item</a>
+		</div>
 	</script>
 
 	<!-- End Views -->
