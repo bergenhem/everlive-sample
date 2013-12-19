@@ -6,7 +6,36 @@ var KendoApp = (function() {
 	var _everLive = new Everlive('nNrMn8Wnn4qXbYmG');
 	var _scData = _everLive.data('SC');
 
+	//Our Users View
+	//You will see the following pattern:
+	//Click Event - Function calling Everlive
+	//
+	//The most important bit is the function calling Everlive,
+	//the click event is just some quick jQuery to get the field values
 	_usersViewModel = new kendo.observable({
+		addUserClick: function(e) {
+			e.preventDefault();
+			var userName = $('#userNameInput').val();
+			var password = $('#passwordInput').val();
+			var email = $('#emailInput').val();
+
+			_usersViewModel.addUser(userName, password, email);
+		},
+		addUser: function(userName, password, email) {
+			_everLive.Users.register(userName, password,
+			{
+				Email: email
+			},
+			function(data) {
+				console.log('Added User: ' + JSON.stringify(data));
+			},
+			function(error) {
+				console.log(error);
+			});
+
+			var carl = 'Awesome!';
+			console.log(carl);
+		},
 		getAllUsersClick: function(e) {
 			e.preventDefault();
 
@@ -36,29 +65,6 @@ var KendoApp = (function() {
 				function(error) {
 					console.log(error);
 				});
-		},
-		addUserClick: function(e) {
-			e.preventDefault();
-			var userName = $('#userNameInput').val();
-			var password = $('#passwordInput').val();
-			var email = $('#emailInput').val();
-
-			_usersViewModel.addUser(userName, password, email);
-		},
-		addUser: function(userName, password, email) {
-			_everLive.Users.register(userName, password,
-			{
-				Email: email
-			},
-			function(data) {
-				console.log('Added User: ' + JSON.stringify(data));
-			},
-			function(error) {
-				console.log(error);
-			});
-
-			var carl = 'Awesome!';
-			console.log(carl);
 		},
 		removeUserClick: function(e) {
 			e.preventDefault();
@@ -104,6 +110,12 @@ var KendoApp = (function() {
 		}
 	});
 
+	//Our Types View
+	//You will see the following pattern:
+	//Click Event - Function calling Everlive
+	//
+	//The most important bit is the function calling Everlive,
+	//the click event is just some quick jQuery to get the field values
 	_typesViewModel = new kendo.observable({
 		addItemClick: function(e) {
 			e.preventDefault();
@@ -214,6 +226,7 @@ var KendoApp = (function() {
 		}
 	});
 
+	//Set up our Kendo UI SPA
 	_kendoApp.startApp = function() {
 		//create our layout
 		var myLayout = new kendo.Layout('kendo-layout-template'); 
@@ -250,6 +263,8 @@ var KendoApp = (function() {
 		myRouter.start();
 	};
 
+	//This is just for learning purposes so that we can see the two ViewModels 
+	//and our Everlive object in the console
 	_kendoApp.usersViewModel = _usersViewModel;
 	_kendoApp.typesViewModel = _typesViewModel;
 	_kendoApp.everLive = _everLive;
