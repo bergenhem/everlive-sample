@@ -56,6 +56,9 @@ var KendoApp = (function() {
 			function(error) {
 				console.log(error);
 			});
+
+			var carl = 'Awesome!';
+			console.log(carl);
 		},
 		removeUserClick: function(e) {
 			e.preventDefault();
